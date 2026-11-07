@@ -1,0 +1,17 @@
+const products = {
+ bread: {title:"ХЛЕБ",items:[["Чиабатта",18],["Хлебец с ядром подсолнуха",18],["Хлеб «Солодовый»",18],["Хлеб «Луковый»",18],["Хлеб «Балтийский»",30],["Багет «Сельский»",20],["Багет «Французский»",18]]},
+ sweet: {title:"СЛАДКАЯ ВЫПЕЧКА",items:[["Круассан с вишней",30],["Круассан с шоколадом",30],["Круассан с ванилью",30],["Круассан «Микс»",30],["Круассан ореховый",35],["Ролл Нью-Йорк с вишней",35],["Ролл Нью-Йорк с шоколадом",35],["Ролл Нью-Йорк с фисташкой",35],["Бомболони с ванилью",25],["Бомболони с шоколадом",25],["Эклер шоколадный",25],["Эклер ванильный",25],["Чизкейк",30],["Медовик",40],["Наполеон",40],["Штрудель с яблоком",25],["Рулетик с яблоком и орехом",25],["Меренговый рулет",35],["Донатс",20],["Пирожное Шу",28],["Тарт вишнёвый",25],["Профитроль",13],["Крендель",20],["Ушко",25],["Пирожное безе",15],["Меренги",15],["Синнабон",35],["Печенье овсяное",35]]},
+ savory: {title:"НЕСЛАДКАЯ ВЫПЕЧКА",items:[["Пицца «4 сыра»",30],["Пицца «Верона»",25],["Пицца «Пепперони»",25],["Сэндвич с карбонатом",40],["Сэндвич с салями",40],["Чиабатта с курицей",40],["Пирог Сибирский",25],["Пирог Осетинский",35],["Сосиска в тесте",30],["Слойка с курицей",28],["Киш с курицей и грибами",40],["Треугольник с вишней",30],["Треугольник с картошкой",20],["Треугольник с творогом",25],["Треугольник с тыквой",20],["Треугольник с картошкой и мясом",25]]},
+ vertuty: {title:"ВЕРТУТЫ",items:[["С картошкой",25],["С капустой",25],["С тыквой",25],["С картошкой и грибами",25],["С капустой и грибами",25],["С курицей и грибами",25],["С творогом",30]]},
+ frozen: {title:"ЗАМОРОЖЕННАЯ ПРОДУКЦИЯ",items:[["Багет сельский · 2 шт.",38],["Хлеб балтийский · 1 шт.",35],["Сосиска в тесте · 2 шт.",45],["Синнабон · 2 шт.",35],["Булочки для мини-бургеров · 4 шт.",30],["Круассан классический","Цена не указана"]]}
+};
+const list=document.querySelector("#menu-list"), caption=document.querySelector("#category-caption");
+function renderMenu(key){const group=products[key];caption.textContent=group.title;list.innerHTML=group.items.map(([name,price])=>`<div class="menu-item"><span>${name}</span><b>${typeof price==="number"?price+" руб.":price}</b></div>`).join("");document.querySelectorAll(".tab").forEach(t=>{const active=t.dataset.category===key;t.classList.toggle("active",active);t.setAttribute("aria-selected",active?"true":"false")})}
+document.querySelectorAll(".tab").forEach(tab=>tab.addEventListener("click",()=>renderMenu(tab.dataset.category)));
+renderMenu("bread");
+const toggle=document.querySelector(".menu-toggle"),nav=document.querySelector(".nav");
+toggle.addEventListener("click",()=>{const open=nav.classList.toggle("open");toggle.setAttribute("aria-expanded",String(open))});
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");toggle.setAttribute("aria-expanded","false")}));
+document.querySelector("#order-form").addEventListener("submit",e=>{e.preventDefault();const data=new FormData(e.currentTarget);const msg=document.querySelector("#form-message");if(!data.get("name").trim()||!data.get("phone").trim()||!data.get("product"))return;msg.textContent="Форма заполнена! Отправка пока не подключена. На следующем этапе подключим Telegram.";msg.classList.add("success");});
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll(".section,.product-card").forEach(el=>{el.classList.add("reveal");observer.observe(el)});

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f0e7">
+  <meta name="description" content="BIOFROST — кофейня-пекарня в Тирасполе. Свежий хлеб, выпечка, десерты и кофе каждый день.">
+  <title>BIOFROST — кофейня-пекарня</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="announcement">Свежая выпечка каждый день · 7:00–22:00</div>
+  <header class="header" id="top">
+    <a class="brand" href="#top" aria-label="BIOFROST — на главную">
+      <span class="brand-mark">B<span>✳</span></span>
+      <span class="brand-name">BIOFROST<small>BAKERY & COFFEE</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
+    <nav class="nav">
+      <a href="#about">О нас</a><a href="#menu">Меню</a><a href="#popular">Популярное</a><a href="#gallery">Галерея</a><a href="#contacts">Контакты</a>
+      <a class="nav-order" href="#order">Предзаказ <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> КОФЕЙНЯ · ПЕКАРНЯ · ТИРАСПОЛЬ</div>
+        <h1>Тепло свежей<br><em>выпечки</em> каждый день.</h1>
+        <p>Ароматный хлеб, нежные десерты и любимый кофе — приготовлены с заботой, чтобы сделать ваш день немного вкуснее.</p>
+        <div class="hero-actions"><a class="button button-dark" href="#menu">Посмотреть меню <span>↗</span></a><a class="text-link" href="#about">Познакомиться с нами <span>↓</span></a></div>
+        <div class="hero-note"><span class="note-icon">✳</span><span><b>Всегда свежее</b><small>Выпекаем с самого утра</small></span></div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=85" alt="Свежий ремесленный хлеб">
+        <div class="hero-sticker"><span>BAKED</span><b>with<br>love</b><small>✳ EVERY DAY ✳</small></div>
+        <div class="image-caption">Маленькие радости — каждый день.</div>
+      </div>
+      <div class="hero-bottom"><span>01 / 05</span><span>SCROLL TO EXPLORE</span><span>EST. WITH LOVE</span></div>
+    </section>
+
+    <section class="intro section" id="about">
+      <div class="section-kicker">01 — НАША ИСТОРИЯ</div>
+      <div class="intro-grid">
+        <h2>Место, где<br>пахнет <em>счастьем.</em></h2>
+        <div><p class="intro-text">BIOFROST — это уютная кофейня-пекарня, где каждый день начинается с аромата свежего хлеба и горячего кофе. Мы собрали любимую выпечку и десерты, чтобы у вас всегда был повод заглянуть на чашечку чего-то вкусного.</p><a class="under-link" href="#contacts">Загляните к нам <span>↗</span></a></div>
+      </div>
+      <div class="values">
+        <div><span>01</span><b>Свежая выпечка</b><small>Каждый день с самого утра</small></div>
+        <div><span>02</span><b>Любимые вкусы</b><small>От хлеба до нежных десертов</small></div>
+        <div><span>03</span><b>Тёплая атмосфера</b><small>Место для маленьких пауз</small></div>
+      </div>
+    </section>
+
+    <section class="menu-section section" id="menu">
+      <div class="section-kicker">02 — ВКУСНОЕ РЯДОМ</div>
+      <div class="section-heading"><div><h2>Наше <em>меню.</em></h2><p>Выбирайте то, что сегодня поднимает настроение.</p></div><span class="menu-count">BIOFROST / MENU</span></div>
+      <div class="menu-tabs" role="tablist" aria-label="Категории меню">
+        <button class="tab active" data-category="bread">Хлеб</button>
+        <button class="tab" data-category="sweet">Сладкая выпечка</button>
+        <button class="tab" data-category="savory">Несладкая выпечка</button>
+        <button class="tab" data-category="vertuty">Вертуты</button>
+        <button class="tab" data-category="frozen">Замороженное</button>
+      </div>
+      <div class="menu-toolbar"><span id="category-caption">ХЛЕБ</span><span>ЦЕНЫ УКАЗАНЫ В РУБЛЯХ</span></div>
+      <div class="menu-list" id="menu-list"></div>
+      <p class="menu-footnote">Ассортимент и наличие могут меняться в течение дня. Уточняйте у сотрудников кофейни.</p>
+    </section>
+
+    <section class="popular section" id="popular">
+      <div class="section-kicker">03 — ВЫБОР ГОСТЕЙ</div>
+      <div class="section-heading"><div><h2>Особенно <em>любимое.</em></h2><p>То, за чем хочется возвращаться.</p></div><a class="under-link" href="#menu">Всё меню <span>↗</span></a></div>
+      <div class="product-grid">
+        <article class="product-card"><div class="product-photo"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=85" alt="Круассан"><span>ХИТ</span></div><div class="product-meta"><div><h3>Круассан</h3><p>Хрустящий и нежный</p></div><b>от 30 руб.</b></div></article>
+        <article class="product-card"><div class="product-photo"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85" alt="Шоколадный торт"><span>СЛАДКОЕ</span></div><div class="product-meta"><div><h3>Медовик</h3><p>Нежный десерт к кофе</p></div><b>40 руб.</b></div></article>
+        <article class="product-card"><div class="product-photo"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=85" alt="Свежий хлеб"><span>КАЖДЫЙ ДЕНЬ</span></div><div class="product-meta"><div><h3>Хлеб «Балтийский»</h3><p>С насыщенным вкусом</p></div><b>30 руб.</b></div></article>
+      </div>
+    </section>
+
+    <section class="gallery-section section" id="gallery">
+      <div class="section-kicker">04 — АТМОСФЕРА BIOFROST</div>
+      <div class="section-heading"><div><h2>Вкусно выглядит.<br><em>Ещё вкуснее внутри.</em></h2></div><p>Немного красоты из нашей повседневной жизни.</p></div>
+      <div class="gallery-grid">
+        <img class="gallery-tall" src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=900&q=85" alt="Выпечка в пекарне">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=85" alt="Свежие круассаны">
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=800&q=85" alt="Кофейня">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=85" alt="Хлеб ручной работы">
+      </div>
+    </section>
+
+    <section class="order-section section" id="order">
+      <div class="order-copy"><div class="section-kicker">05 — ЧТО-ТО ДЛЯ ВАС</div><h2>Любимое —<br><em>к вашему</em><br>приходу.</h2><p>Оставьте заявку на предзаказ. Пока форма работает в демонстрационном режиме и не отправляет данные — подключение Telegram добавим следующим этапом.</p><div class="order-small">✳ &nbsp; СВЕЖЕЕ. ВКУСНОЕ. ВОВРЕМЯ.</div></div>
+      <form class="order-form" id="order-form">
+        <label>Ваше имя<input name="name" type="text" placeholder="Как к вам обращаться?" required></label>
+        <label>Номер телефона<input name="phone" type="tel" placeholder="+373 ..." required></label>
+        <label>Что хотите заказать<select name="product" required><option value="">Выберите категорию или товар</option><option>Хлеб</option><option>Сладкая выпечка</option><option>Несладкая выпечка</option><option>Вертуты</option><option>Замороженная продукция</option><option>Несколько позиций</option></select></label>
+        <label>Комментарий<textarea name="comment" rows="3" placeholder="Количество, пожелания, удобное время..."></textarea></label>
+        <button class="button button-dark submit-button" type="submit">Подготовить предзаказ <span>↗</span></button>
+        <p class="form-message" id="form-message" role="status">Нажимая кнопку, вы подтверждаете корректность введённых данных.</p>
+      </form>
+    </section>
+
+    <section class="contact-section section" id="contacts">
+      <div class="section-kicker">06 — МЫ ЖДЁМ ВАС</div>
+      <div class="section-heading"><div><h2>До встречи<br><em>в BIOFROST.</em></h2></div><p>Забегайте за свежей выпечкой, кофе и хорошим настроением.</p></div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div><span>АДРЕС</span><b>Тирасполь, ул. Покровская, 98</b><small>ТЦ «Реал»</small></div>
+          <div><span>ГРАФИК РАБОТЫ</span><b>Ежедневно · 7:00–22:00</b></div>
+          <div><span>ТЕЛЕФОН</span><b><a href="tel:+37377763222">777 63222</a></b></div>
+          <div><span>INSTAGRAM</span><b><a href="https://www.instagram.com/biofrost_pmr/" target="_blank" rel="noreferrer">@biofrost_pmr ↗</a></b></div>
+        </div>
+        <a class="map-card" href="https://www.google.com/maps/search/?api=1&query=Тирасполь%2C+ул.+Покровская%2C+98" target="_blank" rel="noreferrer" aria-label="Открыть адрес в Google Картах">
+          <div class="map-pattern"></div><span class="map-pin">✳</span><div class="map-label"><small>НАЙТИ НА КАРТЕ</small><b>Покровская, 98 <span>↗</span></b><small>ТЦ «Реал», Тирасполь</small></div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><a class="brand" href="#top"><span class="brand-mark">B<span>✳</span></span><span class="brand-name">BIOFROST<small>BAKERY & COFFEE</small></span></a><span>Сделано с теплом и любовью к выпечке.</span><a href="#top">НАВЕРХ ↑</a><small>© 2026 BIOFROST</small></footer>
+  <script src="script.js"></script>
+</body>
+</html>
