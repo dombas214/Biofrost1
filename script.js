@@ -12,6 +12,32 @@ renderMenu("bread");
 const toggle=document.querySelector(".menu-toggle"),nav=document.querySelector(".nav");
 toggle.addEventListener("click",()=>{const open=nav.classList.toggle("open");toggle.setAttribute("aria-expanded",String(open))});
 nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");toggle.setAttribute("aria-expanded","false")}));
-document.querySelector("#order-form").addEventListener("submit",e=>{e.preventDefault();const data=new FormData(e.currentTarget);const msg=document.querySelector("#form-message");if(!data.get("name").trim()||!data.get("phone").trim()||!data.get("product"))return;msg.textContent="Форма заполнена! Отправка пока не подключена. На следующем этапе подключим Telegram.";msg.classList.add("success");});
+document.querySelector("#order-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const button = form.querySelector('button[type="submit"]');
+  const msg = document.querySelector("#form-message");
+  const data = Object.fromEntries(new FormData(form).entries());
+  msg.textContent = "Отправляем заявку…";
+  msg.classList.remove("success", "error");
+  button.disabled = true;
+  try {
+    const response = await fetch("/api/order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+    if (!response.ok || !result.ok) throw new Error(result.message || "Не удалось отправить заявку.");
+    msg.textContent = result.message;
+    msg.classList.add("success");
+    form.reset();
+  } catch (error) {
+    msg.textContent = error.message || "Ошибка отправки. Попробуйте ещё раз.";
+    msg.classList.add("error");
+  } finally {
+    button.disabled = false;
+  }
+});
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.12});
 document.querySelectorAll(".section,.product-card").forEach(el=>{el.classList.add("reveal");observer.observe(el)});
