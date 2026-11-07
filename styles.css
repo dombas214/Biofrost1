@@ -54,3 +54,11 @@
 .menu-item b{font:700 14px "DM Sans",Arial,sans-serif;color:#7a4c2e;background:#fffaf3;padding-left:10px}
 .menu-footnote{background:#fffaf3;border:1px solid #dfcdb9;border-top:0;margin:0;padding:0 24px 20px;color:#8a7664;font-size:11px}
 @media(max-width:700px){.menu-list{grid-template-columns:1fr;padding:5px 16px 14px}.menu-tabs{margin:25px 0 15px;gap:7px}.menu-tabs .tab{padding:10px 12px;font-size:11px}.menu-toolbar{font-size:9px;padding:12px}.menu-item{font-size:15px;padding:14px 0}.menu-item b{font-size:13px}.menu-footnote{padding:0 16px 16px}}
+
+/* Фото в каждой позиции меню */
+.menu-list{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:22px;padding:14px 20px 20px}
+.menu-item{display:grid;grid-template-columns:76px minmax(0,1fr) auto;align-items:center;gap:13px;min-height:94px;padding:11px 0}
+.menu-item-photo{width:76px;height:68px;display:block;object-fit:cover;border-radius:5px;background:#eadccc;box-shadow:0 2px 7px #3c2b2218}
+.menu-item span{font:600 14px/1.4 "DM Sans",Arial,sans-serif}
+.menu-item b{font-size:13px;white-space:nowrap}
+@media(max-width:700px){.menu-list{grid-template-columns:1fr;padding:8px 15px 15px}.menu-item{grid-template-columns:70px minmax(0,1fr) auto;gap:11px;min-height:84px;padding:9px 0}.menu-item-photo{width:70px;height:62px}.menu-item span{font-size:13px}.menu-item b{font-size:12px}}

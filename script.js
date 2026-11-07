@@ -5,8 +5,23 @@ const products = {
  vertuty: {title:"ВЕРТУТЫ",items:[["С картошкой",25],["С капустой",25],["С тыквой",25],["С картошкой и грибами",25],["С капустой и грибами",25],["С курицей и грибами",25],["С творогом",30]]},
  frozen: {title:"ЗАМОРОЖЕННАЯ ПРОДУКЦИЯ",items:[["Багет сельский · 2 шт.",38],["Хлеб балтийский · 1 шт.",35],["Сосиска в тесте · 2 шт.",45],["Синнабон · 2 шт.",35],["Булочки для мини-бургеров · 4 шт.",30],["Круассан классический","Цена не указана"]]}
 };
+const menuPhotos = {
+  bread: ["photo-1509440159596-0249088772ff", "photo-1585478259715-876acc5be8eb", "photo-1608198093002-ad4e005484e3"],
+  sweet: ["photo-1555507036-ab1f4038808a", "photo-1578985545062-69928b1d9587", "photo-1488477181946-6428a0291777", "photo-1509365465985-25d11c17e812", "photo-1486427944299-d1955d23e34d"],
+  savory: ["photo-1513104890138-7c749659a591", "photo-1579751626657-72bc17010498", "photo-1603133872878-684f208fb84b", "photo-1608198093002-ad4e005484e3"],
+  vertuty: ["photo-1509440159596-0249088772ff", "photo-1608198093002-ad4e005484e3", "photo-1509365465985-25d11c17e812"],
+  frozen: ["photo-1555507036-ab1f4038808a", "photo-1509440159596-0249088772ff", "photo-1608198093002-ad4e005484e3"]
+};
 const list=document.querySelector("#menu-list"), caption=document.querySelector("#category-caption");
-function renderMenu(key){const group=products[key];caption.textContent=group.title;list.innerHTML=group.items.map(([name,price])=>`<div class="menu-item"><span>${name}</span><b>${typeof price==="number"?price+" руб.":price}</b></div>`).join("");document.querySelectorAll(".tab").forEach(t=>{const active=t.dataset.category===key;t.classList.toggle("active",active);t.setAttribute("aria-selected",active?"true":"false")})}
+function renderMenu(key){
+  const group=products[key], photos=menuPhotos[key]||menuPhotos.bread;
+  caption.textContent=group.title;
+  list.innerHTML=group.items.map(([name,price],index)=>{
+    const image=`https://images.unsplash.com/${photos[index%photos.length]}?auto=format&fit=crop&w=180&h=150&q=80`;
+    return `<article class="menu-item"><img class="menu-item-photo" src="${image}" alt="${name}" loading="lazy"><span>${name}</span><b>${typeof price==="number"?price+" руб.":price}</b></article>`;
+  }).join("");
+  document.querySelectorAll(".tab").forEach(t=>{const active=t.dataset.category===key;t.classList.toggle("active",active);t.setAttribute("aria-selected",active?"true":"false")});
+}
 document.querySelectorAll(".tab").forEach(tab=>tab.addEventListener("click",()=>renderMenu(tab.dataset.category)));
 renderMenu("bread");
 const toggle=document.querySelector(".menu-toggle"),nav=document.querySelector(".nav");
